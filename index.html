@@ -40,7 +40,7 @@
 
       --blue: #1d3557;
       --red: #E63946;
-      --gray: #999;
+      --gray: rgba(29, 53, 87, 0.2);
       --white: #F1FAEE;
     }
 
@@ -237,6 +237,9 @@
       display: inline-block;
       padding: 5px 15px;
       font-size: 11px;
+      margin-right: 5px;
+
+      background: rgba(255, 255, 255, 0.5);
     }
 
     p.capsule.alert{
@@ -253,14 +256,14 @@
 
     .organism{
       flex-grow: 1;
-      border: 1px solid gray;
+      border: 1px solid var(--gray);
       padding: 10px;
-      background: white;
+      background: rgba(255, 255, 255, 0.5);
     }
 
     select{
-      border: 1px solid var(--blue);
-      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--gray);
+      background: rgba(255, 255, 255, 0.5);
       color: inherit;
       font: inherit;
       font-size: 15px;
