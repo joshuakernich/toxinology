@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toxinology</title>
+  <style type="text/css">
+
+    @font-face {
+      font-family: HeaderFont;
+      src: url(Oswald-Bold.ttf);
+      font-weight: bold;
+    }
+
+    @font-face {
+      font-family: HeaderFont;
+      src: url(Oswald-ExtraLight.ttf);
+      font-weight: normal;
+    }
+
+    @font-face {
+      font-family: BodyFont;
+      src: url(Quicksand-Light.ttf);
+      font-weight: normal;
+    }
+
+    @font-face {
+      font-family: BodyFont;
+      src: url(Quicksand-Bold.ttf);
+      font-weight: bold;
+    }
+
+    body{
+      font-family: BodyFont;
+      background: #f1faee;
+      color:  #1d3557;
+      margin: 0px;
+      line-height: 1.5;
+
+
+      --blue: #1d3557;
+      --red: #E63946;
+      --gray: #999;
+    }
+
+    .header{
+      padding: 20px;
+      font-family: HeaderFont;
+      font-weight: normal;
+      font-size: 30px;
+      background: #e63946;
+      text-align: left;
+    }
+
+    button{
+      font:  inherit;
+      background: #e63946;
+      border:  none;
+      color:  white;
+      border-radius: 5px;
+      flex-grow: 1;
+      padding: 10px 30px;
+      font-size: 15px;
+      flex: 1;
+    }
+
+    .pillars{
+      display: flex;
+    }
+
+    .search-pillar{
+      
+      text-align: left;
+      max-width: 500px;
+      padding: 20px;
+      display: inline-block;
+      background: rgba(255,255,255,0.3);
+      border-right: 1px solid rgba(0,0,0,0.1);
+
+    }
+
+    .organism-pillar{
+      padding: 20px;
+      width: 500px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+      flex-grow: 1;
+    }
+
+    p{
+      margin:  0px;
+    }
+
+    input{
+      display: block;
+      width: 100%;
+      font: inherit;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    h2{
+      font-size: 20px;
+      font-weight: normal;
+      margin: 0px;
+    }
+
+    .question{
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .question-text{
+      margin-bottom: 10px;
+    }
+
+    .hint{
+      font-size: 12px;
+    }
+
+    .options{
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px;
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      display: none;
+    }
+
+    .options .option{
+      text-align: center;
+      padding: 5px 20px;
+      background: #e63946;
+      color: white;
+      flex-grow: 1;
+    }
+
+    .advice{
+      padding: 10px;
+      border: 1px solid #e63946;
+      padding-left: 45px;
+      background-image: url('./alert-triangle.svg');
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+    }
+
+    .c-input{
+      position: relative;
+    }
+
+    .prompts{
+      position: absolute;
+      top: 1px;
+      left: 0px;
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px;
+      bottom: 1px;
+      overflow: hidden;
+      pointer-events: none;
+      color: #ccc;
+    }
+
+    .prompts p{
+      padding: 10px;
+      position: relative;
+    }
+
+    .c-lister{
+      border: 1px solid gray;
+    }
+
+    .c-lister button{
+      background: none;
+      color: red;
+      padding: 10px 15px;
+
+    }
+
+    .c-lister button:before{
+      content: '+';
+      border: 1px solid red;
+      border-radius: 100px;
+      width: 20px;
+      line-height: 20px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .c-lister ul{
+      margin: 0px;
+      padding: 0px;
+      list-style-type: none;
+    }
+
+    .c-lister li{
+      list-style-type: none;
+      padding: 10px 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .c-selector{
+      display: flex;
+      gap: 10px;
+    }
+
+    .selector-option{
+      border: 1px solid gray;
+      background: white;
+      flex-grow: 1;
+      width: 80px;
+      
+      font-size: 12px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    p.capsule{
+      border-radius: 100px;
+      border: 1px solid var(--gray);
+      color: var(--blue);
+      display: inline-block;
+      padding: 5px 15px;
+      font-size: 11px;
+    }
+
+    p.capsule.alert{
+      background: var(--red);
+    }
+
+    .organisms{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .organism{
+      flex-grow: 1;
+      border: 1px solid gray;
+      padding: 10px;
+      background: white;
+    }
+
+    select{
+      border: 1px solid var(--blue);
+      background: rgba(255, 255, 255, 0.1);
+      color: inherit;
+      font: inherit;
+      font-size: 15px;
+      padding: 5px 10px;
+      border-radius: 20px;
+    }
+
+    .organisms-header{
+      display: flex;
+      flex:1;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+  </style>
+  <script type="text/javascript" src="jq.js"></script>
+  <script type="text/javascript">
+    $(function(){
+
+      var qs = [
+        /*{
+          t:"Is the person's life in danger?",
+          o:{
+            'yes':doFirstAid,
+            'no':doNextQuestion,
+          }
+        },*/{
+          t:"Location",
+          c:{ type:'lister', preload:['🇦🇺 Australia'], add:'Add location' },
+          o:{
+            'done':doNextQuestion,
+          }
+        },
+        {
+          t:"Identity",
+          c:{ type:'input', clue:'e.g. Brown Snake, Mushroom, Spider', prompts:['Brown snake','Spider','Mushroom'] },
+          o:{
+            'not sure':doNextQuestion,
+            'search':doNextQuestion,
+          }
+        },
+        
+        {
+          t:"Biosphere",
+          c:{ type:'selector',
+            o:[
+              {t:'land'},
+              {t:'salt water'},
+              {t:'fresh water'}
+            ]
+          },
+          o:{
+            'done':doNextQuestion
+          }
+        },
+
+        {
+          t:"Symptoms",
+          c:{ type:'selector',
+            o:[
+              {t:'wound'},
+              {t:'nausea'},
+              {t:'malaise'}
+            ]
+          },
+          o:{
+            'done':doNextQuestion
+          }
+        }
+      ]
+
+      var iq = -1;
+
+      function makeLister(c){
+        var $e = $('<div class="c-lister">');
+
+        var $ul = $('<ul>').appendTo($e);
+        if(c.preload) for(var n in c.preload) $('<li>').appendTo($ul).text(c.preload[n]);
+
+        function addToList(){
+          $('<li>').appendTo($ul).text('-');
+        }
+
+        $('<button>').appendTo($e).text(c.add).click(addToList);
+        return $e;
+      }
+
+      function makeSelector(c){
+        var $e = $('<div class="c-selector">');
+        for(var n in c.o){
+          var $o = $('<div class="selector-option">').appendTo($e);
+          $('<img src="./droplet.svg">').appendTo($o);
+          $('<p>').appendTo($o).text(c.o[n].t);
+        }
+        return $e;
+      }
+
+      function makeRollingPrompts(prompts){
+        var $p = $('<div class="prompts">');
+        var $a = $('<p>').appendTo($p).text(prompts[0]);
+        var $b = $('<p>').appendTo($p).text(prompts[1]);
+
+        var i = -1;
+
+        function next(){
+          i++;
+          $a.text(prompts[(i)%prompts.length]).css({top:0}).delay(800).animate({top:'-100%'},500);
+          $b.text(prompts[(i+1)%prompts.length]).css({top:0}).delay(800).animate({top:'-100%'},500,next);
+        }
+
+        next();
+
+        return $p;
+      }
+
+      function makeInput(c){
+        var $e = $('<div class="c-input">');
+        //if(c.clue) $('<p class="hint">').text(c.clue).appendTo($e);
+        $('<input>').appendTo($e);
+        if(c.prompts) makeRollingPrompts(c.prompts).appendTo($e);
+        return $e;
+      }
+
+      function doFirstAid(){
+        doNextQuestion();
+      }
+
+      function doNextQuestion(){
+        iq++;
+
+        var q = qs[iq];
+
+        var $q = $('<div class="question">').appendTo('.search-pillar');
+        $('<p class="question-text">').appendTo($q).text( q.t );
+        
+        if(q.c){
+          if(q.c.type == 'input') makeInput(q.c).appendTo($q);
+          if(q.c.type == 'lister') makeLister(q.c).appendTo($q);
+          if(q.c.type == 'selector') makeSelector(q.c).appendTo($q);
+        } 
+
+        if(q.o){
+          var $o = $('<div class="options">').appendTo($q);
+          for(var n in q.o) $('<div class="option">').appendTo($o).text(n).click(function(){
+            $o.hide();
+            q.o[n]();
+          });
+        }
+      }
+
+
+
+      while(iq<qs.length-1) doNextQuestion();
+
+      for(var i=0; i<50; i++){
+        var $o = $('<div class="organism">').appendTo('.organisms');
+        $('<img src="https://picsum.photos/id/'+(106+i)+'/200/100">').appendTo($o);
+        $('<p>').appendTo($o).text('Deadly Thing');
+      }
+
+
+
+    })
+  </script>
+</head>
+<body>
+  <div class="header"><b>TOXIN</b>OLOGY.com</div>
+  
+  <div class="pillars">
+    <div class="search-pillar">
+      <!--div class="advice">
+        <p>If life is in <b>immediate danger</b>, manage any acute medical problems to stabilise the situation before continuing.</p>
+      </div-->
+    </div>
+    <div class="organism-pillar">
+      <div class="organisms-header"><h2>3256 possible organisms</h2><select><option>Sort by dangerousness</option></select></div>
+
+      <p class="capsule">⚠️ 512 high risk</p>
+      <p class="capsule">🐍 99+ snakes</p>
+      <p class="capsule">🕷️ 52 spiders</p>
+      <p class="capsule">🌿 12 plants</p>
+      <div class="organisms">
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
