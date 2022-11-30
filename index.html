@@ -41,6 +41,7 @@
       --blue: #1d3557;
       --red: #E63946;
       --gray: #999;
+      --white: #F1FAEE;
     }
 
     .header{
@@ -50,6 +51,15 @@
       font-size: 30px;
       background: #e63946;
       text-align: left;
+    }
+
+    .search-pillar-header{
+      font-weight: normal;
+      font-size: 30px;
+      
+      font-family: HeaderFont;
+      padding: 20px;
+      padding-bottom: 0px;
     }
 
     button{
@@ -72,11 +82,15 @@
       
       text-align: left;
       max-width: 500px;
-      padding: 20px;
+      
       display: inline-block;
-      background: rgba(255,255,255,0.3);
-      border-right: 1px solid rgba(0,0,0,0.1);
+      background: var(--blue);
+      color: #F1FAEE;
 
+    }
+
+    .search-pillar-content{
+      padding: 20px;
     }
 
     .organism-pillar{
@@ -86,6 +100,8 @@
       vertical-align: top;
       text-align: left;
       flex-grow: 1;
+      height: 100vh;
+      overflow: auto;
     }
 
     p{
@@ -107,7 +123,7 @@
     }
 
     .question{
-      font-size: 20px;
+      font-size: 15px;
       margin-bottom: 20px;
     }
 
@@ -169,24 +185,20 @@
     }
 
     .c-lister{
-      border: 1px solid gray;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .c-lister button{
       background: none;
-      color: red;
+      color: var(--white);
       padding: 10px 15px;
 
     }
 
     .c-lister button:before{
       content: '+';
-      border: 1px solid red;
-      border-radius: 100px;
-      width: 20px;
-      line-height: 20px;
-      display: inline-block;
       margin-right: 10px;
+      display: inline-block;
     }
 
     .c-lister ul{
@@ -198,8 +210,8 @@
     .c-lister li{
       list-style-type: none;
       padding: 10px 15px;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-      background: rgba(255, 255, 255, 0.5);
+      border-bottom: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .c-selector{
@@ -208,8 +220,8 @@
     }
 
     .selector-option{
-      border: 1px solid gray;
-      background: white;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       flex-grow: 1;
       width: 80px;
       
@@ -219,7 +231,7 @@
     }
 
     p.capsule{
-      border-radius: 100px;
+      
       border: 1px solid var(--gray);
       color: var(--blue);
       display: inline-block;
@@ -252,8 +264,13 @@
       color: inherit;
       font: inherit;
       font-size: 15px;
-      padding: 5px 10px;
-      border-radius: 20px;
+      padding: 5px
+    }
+
+    input{
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+
     }
 
     .organisms-header{
@@ -267,6 +284,8 @@
   <script type="text/javascript" src="jq.js"></script>
   <script type="text/javascript">
     $(function(){
+
+      var words = "Nulla viverra mi et turpis congue dignissim. Sed gravida aliquam libero, id porttitor neque consectetur vel. Curabitur dignissim massa vel est maximus, tincidunt pellentesque mi feugiat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut commodo lacinia lacus a faucibus. Integer ac nunc nec lectus eleifend euismod nec in metus. Nunc consectetur odio ut augue eleifend viverra. Proin consectetur venenatis imperdiet.Suspendisse eu pellentesque purus. In id hendrerit orci. Praesent rhoncus commodo sagittis. Donec porttitor orci vel sollicitudin lobortis. In hac habitasse platea dictumst. Maecenas pharetra quam eu ipsum dignissim dignissim. Etiam ullamcorper quam non nunc malesuada, eu egestas enim tempor. Nunc molestie, dui et commodo sagittis, odio magna varius dolor, convallis venenatis ex quam vel libero. Maecenas molestie euismod risus ac sollicitudin. Ut orci erat, lobortis id vulputate eget, elementum at lorem. Proin pretium tempor convallis. Integer a commodo dolor.".split(' ');
 
       var qs = [
         /*{
@@ -381,7 +400,7 @@
 
         var q = qs[iq];
 
-        var $q = $('<div class="question">').appendTo('.search-pillar');
+        var $q = $('<div class="question">').appendTo('.search-pillar-content');
         $('<p class="question-text">').appendTo($q).text( q.t );
         
         if(q.c){
@@ -406,7 +425,7 @@
       for(var i=0; i<50; i++){
         var $o = $('<div class="organism">').appendTo('.organisms');
         $('<img src="https://picsum.photos/id/'+(106+i)+'/200/100">').appendTo($o);
-        $('<p>').appendTo($o).text('Deadly Thing');
+        $('<p>').appendTo($o).text(words[i*2]+' '+words[i*2+1]);
       }
 
 
@@ -415,10 +434,12 @@
   </script>
 </head>
 <body>
-  <div class="header"><b>TOXIN</b>OLOGY.com</div>
+  
   
   <div class="pillars">
     <div class="search-pillar">
+      <div class="search-pillar-header"><b>TOXIN</b>OLOGY.com</div>
+      <div class='search-pillar-content'></div>
       <!--div class="advice">
         <p>If life is in <b>immediate danger</b>, manage any acute medical problems to stabilise the situation before continuing.</p>
       </div-->
