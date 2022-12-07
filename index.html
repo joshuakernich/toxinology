@@ -101,6 +101,7 @@
       height: 100vh;
       box-sizing: border-box;
       overflow: auto;
+      position: relative;
     }
 
     p{
@@ -337,22 +338,27 @@
     }
 
     .modal{
-      position: fixed;
+      position: absolute;
       top: 0px;
       left: 0px;
       right: 0px;
-      bottom: 0px;
       overflow: auto;
-      background: rgba(220,220,220,0.8);
-      display: none;
+      background: transparent;
+      height: 100vh;
+      transition: 0.5s all;
+      transform: translateX(100%);
+    }
+
+    .modal.active{
+      transform: translateX(0px);
     }
 
     .modal-panel{
       background: var(--white);
       border-left: 1px solid var(--blue);
       border-right: 1px solid var(--blue);
-      max-width: 800px;
-      margin: auto;
+      width: 100%;
+      margin-left: auto;
     }
 
     .dangerousness path:nth-of-type(1){ stroke: #54dd82 }
@@ -421,6 +427,7 @@
       background: var(--blue);
       padding: 20px;
       color: var(--white);
+      border-left: 1px solid var(--white);
     }
 
     .modal-content{
@@ -573,8 +580,8 @@
           c:{ type:'selector',
             o:[
               {t:'land', icon:'./icons/hills.svg'},
-              {t:'salt water'},
-              {t:'fresh water'}
+              {t:'salt water', icon:'./icons/wave.svg'},
+              {t:'fresh water', icon:'./icons/pond.svg'}
             ]
           },
           o:{
@@ -586,9 +593,9 @@
           t:"Symptoms",
           c:{ type:'selector',
             o:[
-              {t:'wound'},
-              {t:'nausea'},
-              {t:'malaise'}
+              {t:'wound', icon:'./icons/wounds.svg'},
+              {t:'nausea', icon:'./icons/nausea.svg'},
+              {t:'dizzy', icon:'./icons/dizziness.svg'}
             ]
           },
           o:{
@@ -680,9 +687,12 @@
 
       while(iq<qs.length-1) doNextQuestion();
 
+      var sneks = [1,2,3,4,5,6]
+
       for(var i=0; i<50; i++){
         var $o = $('<div class="organism">').appendTo('.organisms').click(showModal);
-        $('<img src="https://picsum.photos/id/'+(106+i)+'/200/100">').appendTo($o);
+        //$('<img src="https://picsum.photos/id/'+(106+i)+'/200/100">').appendTo($o);
+        $('<img height=120 src="http://www.toxinology.com/images/snakes/SNP0521'+sneks[i%sneks.length]+'.jpg">').appendTo($o);
         $('<p>').appendTo($o).text(words[i*2]+' '+words[i*2+1]);
       }
 
@@ -703,11 +713,11 @@
       })
 
       function showModal(){
-        $('.modal').show();
+        $('.modal').addClass('active');
       }
 
       $('.modal').click(function(){
-        $(this).hide();
+        $(this).removeClass('active');
       })
     })
   </script>
@@ -733,7 +743,7 @@
       <div class="organisms">
 
       </div>
-    </div>
+    
     <div class="modal">
       <div class="modal-panel">
         
@@ -802,6 +812,7 @@
         <p>Bites by mulga snakes are characterized by local pain, swelling and systemic myolysis, occasionally anticoagulant coagulopathy, and secondary renal failure. Rarely, there may be evidence of mild paralysis, usually limited to ptosis only. Probably most bites will develop at least some systemic envenoming, so many cases will require antivenom therapy. Admit all cases of definite or suspected bites.</p><p>On presentation, establish a good IV line, commence IV fluids, take bloods for initial tests ("extended coagulation tests" = PT/INR, aPTT, fibrinogen level***, FDP/XDP, platelet count; CK, urea, creatinine, WCC, K+), perform venom detection on the bite site (if uncertain of identity of snake). (*** fibrinogen level is only useful if it can be reliably measured to very low levels; many labs are unable to do this or may use indirect measurement and in this setting fibrinogen is not a useful test and could be omitted)Unless contraindicated by pre-existing medical conditions, give an IV fluid load (1L over 2-3 hrs in an adult; volume determined by weight in a child), then keep well hydrated thereafter (100-150 mL/hr in an adult), while carefully watching for fluid overload, monitoring fluid input and output. If a first aid bandage is in place over the bitten limb, leave on until the blood tests, venom detection and full examination are complete and results available. To perform venom detection cut away the bandage immediately over the bite area, to swab for venom. Keep the cut-away bandages, in case they are needed later for venom detection.</p><p>If the patient presents with envenoming clearly established, or blood tests show evidence of systemic envenoming (high and/or rising CK, less commonly an anticoagulant coagulopathy, with prolonged PT/INR, aPTT, but normal fibrinogen level and normal or barely elevated FDP/XDP), then commence antivenom therapy prior to removal of first aid. Initial dose should be 1 vial of CSL Black Snake AV IV (only in severe cases would >1 vial be needed initially), diluted up to 1:10 (less in children, to avoid volume overload), with adrenaline ready to treat anaphylaxis, should this occur.</p><p>Repeat blood tests 3 hrs after completion of initial dose of antivenom therapy, to determine if myolysis has been arrested (no further or minimal rise in CK) and any coagulopathy reversed (PT/INR and aPTT falling towards normal). If the CK has continued to climb dramatically, consider giving further antivenom. If the 3hr tests suggest improvement then wait 2-3 hrs and retest. If there is continued improvement, it is likely no further antivenom will be needed. If, however, there has been no improvement or worsening, give further antivenom. The role of antivenom in reversing myolysis is controversial, but given the potential lethality of severe myolysis, further antivenom therapy should always be considered.</p><p>For cases where initial blood tests show no sign of either myolysis (CK) or anticoagulant coagulopathy, no antivenom is required at this stage, but repeat tests 2-3 hrs and 5-6 hrs later and if these show developing envenoming, treat with antivenom, as discussed earlier.</p><p>For cases with myolysis, CK may rise to very high levels, >100,000 IU/L. This is accompanied by muscle pain, tenderness and weakness in most cases. There will also be gross myoglobinuria (red to black urine) and the risk of renal failure. Hyperkalaemia can develop secondary to myolysis and is more severe if there is secondary renal failure. It can cause cardiotoxicity and is potentially lethal and may be difficult to treat.</p><p>The anticoagulant coagulopathy is only rarely associated with significant bleeding and in most cases will be rapidly and completely reversed by antivenom therapy. It is distinguished from the defibrination commonly seen with bites by some other Australian snakes (brown snakes, tiger snakes, taipans etc) by the normal fibrinogen level and absence of high levels of FDP/XDP.</p><p>Mulga snake bites commonly develop both local pain and swelling. The latter may be quite extensive, but local necrosis is rare. The swelling may take several days to > week to settle fully and may look like cellulitis. If there is a strong suspicion of secondary infection with cellulitis, then antibiotic therapy, initially IV, is required, but in most cases of mulga snake bites, antibiotics are not required. Tetanus immunisation status should always be checked and a booster given when indicated, but not until any coagulopathy has been reversed.</p>
       </div>
       </div>
+    </div>
     </div>
     </div>
   </div>
