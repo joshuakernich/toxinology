@@ -47,10 +47,7 @@
 
     .header{
       padding: 20px;
-      font-family: HeaderFont;
-      font-weight: normal;
-      font-size: 30px;
-      background: #e63946;
+      
       text-align: left;
     }
 
@@ -281,16 +278,21 @@
       padding: 10px;
     }
 
+    .selector-option img{
+      width: 30px;
+      height: 30px;
+    }
+
     p.capsule{
       
       border: 1px solid var(--gray);
       color: var(--blue);
       display: inline-block;
-      padding: 5px 15px;
+      padding: 5px;
       font-size: 11px;
       margin-right: 5px;
 
-      background: rgba(255, 255, 255, 0.5);
+      background: white;
     }
 
     p.capsule.alert{
@@ -347,10 +349,10 @@
 
     .modal-panel{
       background: var(--white);
-      border: 1px solid var(--blue);
+      border-left: 1px solid var(--blue);
+      border-right: 1px solid var(--blue);
       max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
+      margin: auto;
     }
 
     .dangerousness path:nth-of-type(1){ stroke: #54dd82 }
@@ -359,27 +361,181 @@
     .dangerousness path:nth-of-type(4){ stroke: #dd9954; }
     .dangerousness path:nth-of-type(5){ stroke: var(--red); }
 
-    .risk:before{
-      content: "";
-      width: 12px;
-      height: 12px;
-      vertical-align: middle;
-      background-image: url('./alert-triangle.svg');
-      stroke: white;
-      display: inline-block;
-      background-size: 100%;
-      margin-right: 5px;
-    }
-
-    .risk.high{
-      border-color: var(--red);
-      font-weight: bold;
-      color: var(--red);
-      padding: 5px 10px;
-    }
+    
+    
 
     .treatment p{
       margin-bottom: 20px;
+    }
+
+    .capsule-list{
+      border: 1px solid var(--gray);
+      color: var(--blue);
+      display: inline-block;
+      
+      font-size: 11px;
+      margin-right: 5px;
+
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .capsule-list span{
+      border-right: 1px solid var(--gray);
+      padding: 5px 10px;
+      display: inline-block;
+    }
+
+    .capsule-list span:last-of-type{
+      border-right: none;
+    }
+
+    img.icon{
+      width: 12px;
+      stroke: var(--blue);
+      display: inline-block;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    .first-aid{
+      list-style-type: none;
+      gap: 10px;
+      padding: 0px;
+    }
+
+    .first-aid li{
+      border-left: 2px solid var(--blue);
+      margin: 0px;
+      padding-left: 10px;
+      margin-bottom: 10px;
+    }
+
+    .first-aid h3{
+      font-weight: bold;
+      margin: 0px;
+      margin-bottom: 10px;
+      display: inline;
+    }
+
+    .modal-header{
+      background: var(--blue);
+      padding: 20px;
+      color: var(--white);
+    }
+
+    .modal-content{
+      padding: 20px;
+    }
+
+    .logo{
+      font-family: HeaderFont;
+      font-weight: normal;
+      font-size: 30px;
+    }
+
+    .logo:before{
+      content:"TOXIN";
+      font-weight: bold;
+    }
+
+    .logo:after{
+      content: "OLOGY.com";
+
+    }
+
+    .modal-header .capsule{
+      color: var(--white);
+      border-color: var(--white);
+      background: transparent;
+    }
+
+    .modal-header .capsule-list{
+      background: transparent;
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    .modal-header .capsule-list span{
+      border-color: var(--white);
+    }
+
+    .modal-header img{
+      border-color: var(--white);
+    }
+   
+
+    .modal-menu{
+      list-style-type: none;
+      padding: 0px;
+      display: flex;
+      margin: 0px;
+      margin-bottom: 20px;
+      gap: 20px;
+    }
+
+    .modal-menu li{
+      font-size: 12px;
+      padding-right: 20px;
+      border-right: 1px solid var(--blue);
+    }
+
+    .modal-menu li:last-of-type{
+      border-right: none;
+    }
+
+    .modal-menu li:before{
+      content: "";
+      height: 40px;
+      background-image: url('./icons/first-aid.png');
+      background-position: center;
+      background-size: 30px;
+      background-repeat: no-repeat;
+      display: block;
+      width: 100%;
+      flex-grow: 1;
+    }
+
+    .modal-menu li:nth-of-type(2):before{ background-image:url('./icons/diagnosis.png') }
+    .modal-menu li:nth-of-type(3):before{ background-image:url('./icons/treatment.png') }
+    .modal-menu li:nth-of-type(4):before{ background-image:url('./icons/lab-notes.png') }
+
+    .risk.high{
+      font-weight: bold;
+      background: var(--red);
+      padding: 5px 10px;
+    }
+
+    .name-header{
+      display: flex;
+      align-items: top;
+    }
+
+    .name-back{
+      width: 40px;
+      height: 48px;
+      background-image: url('./icons/arrow-left.svg');
+      background-position: center left;
+      vertical-align: middle;
+      background-repeat: no-repeat;
+      background-size: 30px;
+
+    }
+
+    .name-main{
+      font-size: 30px;
+    }
+
+    .name-secondary{
+      font-size: 12px;
+    }
+
+    .icon{
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      vertical-align: middle;
+      background-image: url('./icons/snake-sit.svg');
+      background-size: 100%;
     }
 
   </style>
@@ -416,7 +572,7 @@
           t:"Biosphere",
           c:{ type:'selector',
             o:[
-              {t:'land'},
+              {t:'land', icon:'./icons/hills.svg'},
               {t:'salt water'},
               {t:'fresh water'}
             ]
@@ -461,7 +617,7 @@
         var $e = $('<div class="c-selector">');
         for(var n in c.o){
           var $o = $('<div class="selector-option">').appendTo($e);
-          $('<img src="./droplet.svg">').appendTo($o);
+          $('<img src="'+c.o[n].icon+'">').appendTo($o);
           $('<p>').appendTo($o).text(c.o[n].t);
         }
         return $e;
@@ -561,7 +717,7 @@
   
   <div class="pillars">
     <div class="search-pillar">
-      <div class="search-pillar-header"><b>TOXIN</b>OLOGY.com</div>
+      <div class="search-pillar-header"><div class="logo"></div></div>
       <div class='search-pillar-content'></div>
       <!--div class="advice">
         <p>If life is in <b>immediate danger</b>, manage any acute medical problems to stabilise the situation before continuing.</p>
@@ -571,7 +727,7 @@
       <div class="organisms-header"><p>3256 possible organisms</p><select><option>Sort by dangerousness</option></select></div>
 
       <p class="capsule">⚠️ 512 high risk</p>
-      <p class="capsule">🐍 99+ snakes</p>
+      <p class="capsule"><span class="icon snake"></span> 99+ snakes</p>
       <p class="capsule">🕷️ 52 spiders</p>
       <p class="capsule">🌿 12 plants</p>
       <div class="organisms">
@@ -580,28 +736,61 @@
     </div>
     <div class="modal">
       <div class="modal-panel">
-        <h2>King Brown Snake | Mulga Snake</h2>
-        <p class="capsule risk high">High Risk</p>
-        <p class="capsule">Pseudechis australis</p>
-        <p class="capsule">Elapidae | Elapinae | Pseudechis | australis</p>
-        <p class="capsule">Australia</p>
-        <!--div class="c-dangerousness">
-          <svg class='dangerousness' viewBox='-20 -20 140 70' width=150 height=75 stroke='black' stroke-width=10>
-            <path d=''/>
-            <path d=''/>
-            <path d=''/>
-            <path stroke-width=15 d=''/>
-            <path d=''/>
-          </svg>
-          <div class="needle"></div>
-          <p>Lethal</p>
-        </div-->
-        <br/><br/>
-        <img height=200 style="border:1px solid var(--blue);" src="http://www.toxinology.com/images/snakes/SNP05211.jpg">
-        <div 
-          style="border:1px solid var(--blue);background-position:center;background-size:150%;width:200px;height:200px;display:inline-block;background-image:url(./australia.png)">
+        
+          
+        <div class="modal-header">
+          
+          <div class="name-header">
+            <div class='name-back'></div>
+            <div class="name-names">
+              <div class='name-main'>King Brown Snake</div>
+              <div class='name-secondary'>AKA Mulga Snake</div>
+            </div>
           </div>
-        <br><br>
+          
+          <div style="height:10px;"></div>
+          <div style="height:10px;"></div>
+          <p class="capsule risk high"><img class='icon' src="./icons/alert-triangle.svg"/>High Risk</p>
+          <p class="capsule-list"><span><img class='icon' src="./icons/book-open.svg"/>Pseudechis australis</span><span>Elapidae</span><span>Elapinae</span><span>Pseudechis</span><span>australis</p>
+          <p class="capsule">Australia</p>
+          <!--div class="c-dangerousness">
+            <svg class='dangerousness' viewBox='-20 -20 140 70' width=150 height=75 stroke='black' stroke-width=10>
+              <path d=''/>
+              <path d=''/>
+              <path d=''/>
+              <path stroke-width=15 d=''/>
+              <path d=''/>
+            </svg>
+            <div class="needle"></div>
+            <p>Lethal</p>
+          </div-->
+          <div style="height:10px;"></div>
+          <img height=200 style="border:1px solid var(--white);" src="http://www.toxinology.com/images/snakes/SNP05211.jpg"><div 
+            style="margin-left:10px;border:1px solid var(--white);background-position:center;background-size:150%;width:200px;height:200px;display:inline-block;background-image:url(./australia.png)">
+            </div>
+        </div>
+        <div class="modal-content">
+        <ul class="modal-menu">
+          <li>First Aid</li>
+          <li>Diagnosis</li>
+          <li>Treatment</li>
+          <li>Lab Findings</li>
+        </ul>
+        <h2>First Aid</h2>
+        <p>First aid for Australian and New Guinean snakebites</p>
+        <br>
+        <img src="./icons/distance.png" width="30">
+          <p><b>Create safe distance from Snake.</b></p>
+          <br>
+          <img src="./icons/stop.png" width="30">
+          <p><b>Immobilise and calm victim.</b> Most snake bites from venemous snakes DO NOT ENVENOMATE the victim. If envenomated, it will take hours or days to spread through the system. Modern treatment is highly effective.</p>
+          <br>
+          <img src="./icons/hand.png" width="30">
+          <p><b>Don't handle the wound.</b>  The wound must not be wiped or cleaned in any way, as this may interfere with later venom detection and the wound must not be massaged.</p>
+          <br>
+          <img src="./icons/ring.png" width="30">
+          <p><b>Remove jewelery on bitten limb.</b> All rings or other jewellery on the bitten limb, especially on fingers, should be removed, as they may act as tourniquets if oedema develops.</p>
+          <br>
         <h2>Key features</h2>
         <p class="capsule">Local pain & swelling</p>
         <p class="capsule">myolysis</p>
@@ -613,6 +802,7 @@
         <p>Bites by mulga snakes are characterized by local pain, swelling and systemic myolysis, occasionally anticoagulant coagulopathy, and secondary renal failure. Rarely, there may be evidence of mild paralysis, usually limited to ptosis only. Probably most bites will develop at least some systemic envenoming, so many cases will require antivenom therapy. Admit all cases of definite or suspected bites.</p><p>On presentation, establish a good IV line, commence IV fluids, take bloods for initial tests ("extended coagulation tests" = PT/INR, aPTT, fibrinogen level***, FDP/XDP, platelet count; CK, urea, creatinine, WCC, K+), perform venom detection on the bite site (if uncertain of identity of snake). (*** fibrinogen level is only useful if it can be reliably measured to very low levels; many labs are unable to do this or may use indirect measurement and in this setting fibrinogen is not a useful test and could be omitted)Unless contraindicated by pre-existing medical conditions, give an IV fluid load (1L over 2-3 hrs in an adult; volume determined by weight in a child), then keep well hydrated thereafter (100-150 mL/hr in an adult), while carefully watching for fluid overload, monitoring fluid input and output. If a first aid bandage is in place over the bitten limb, leave on until the blood tests, venom detection and full examination are complete and results available. To perform venom detection cut away the bandage immediately over the bite area, to swab for venom. Keep the cut-away bandages, in case they are needed later for venom detection.</p><p>If the patient presents with envenoming clearly established, or blood tests show evidence of systemic envenoming (high and/or rising CK, less commonly an anticoagulant coagulopathy, with prolonged PT/INR, aPTT, but normal fibrinogen level and normal or barely elevated FDP/XDP), then commence antivenom therapy prior to removal of first aid. Initial dose should be 1 vial of CSL Black Snake AV IV (only in severe cases would >1 vial be needed initially), diluted up to 1:10 (less in children, to avoid volume overload), with adrenaline ready to treat anaphylaxis, should this occur.</p><p>Repeat blood tests 3 hrs after completion of initial dose of antivenom therapy, to determine if myolysis has been arrested (no further or minimal rise in CK) and any coagulopathy reversed (PT/INR and aPTT falling towards normal). If the CK has continued to climb dramatically, consider giving further antivenom. If the 3hr tests suggest improvement then wait 2-3 hrs and retest. If there is continued improvement, it is likely no further antivenom will be needed. If, however, there has been no improvement or worsening, give further antivenom. The role of antivenom in reversing myolysis is controversial, but given the potential lethality of severe myolysis, further antivenom therapy should always be considered.</p><p>For cases where initial blood tests show no sign of either myolysis (CK) or anticoagulant coagulopathy, no antivenom is required at this stage, but repeat tests 2-3 hrs and 5-6 hrs later and if these show developing envenoming, treat with antivenom, as discussed earlier.</p><p>For cases with myolysis, CK may rise to very high levels, >100,000 IU/L. This is accompanied by muscle pain, tenderness and weakness in most cases. There will also be gross myoglobinuria (red to black urine) and the risk of renal failure. Hyperkalaemia can develop secondary to myolysis and is more severe if there is secondary renal failure. It can cause cardiotoxicity and is potentially lethal and may be difficult to treat.</p><p>The anticoagulant coagulopathy is only rarely associated with significant bleeding and in most cases will be rapidly and completely reversed by antivenom therapy. It is distinguished from the defibrination commonly seen with bites by some other Australian snakes (brown snakes, tiger snakes, taipans etc) by the normal fibrinogen level and absence of high levels of FDP/XDP.</p><p>Mulga snake bites commonly develop both local pain and swelling. The latter may be quite extensive, but local necrosis is rare. The swelling may take several days to > week to settle fully and may look like cellulitis. If there is a strong suspicion of secondary infection with cellulitis, then antibiotic therapy, initially IV, is required, but in most cases of mulga snake bites, antibiotics are not required. Tetanus immunisation status should always be checked and a booster given when indicated, but not until any coagulopathy has been reversed.</p>
       </div>
       </div>
+    </div>
     </div>
   </div>
 </body>
