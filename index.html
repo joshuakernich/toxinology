@@ -129,6 +129,12 @@
     }
 
     .question-text{
+      margin-bottom: 0px;
+    }
+
+    .question-subtext{
+      font-size: 10px;
+      opacity: 0.5;
       margin-bottom: 10px;
     }
 
@@ -241,7 +247,6 @@
       background: none;
       color: var(--white);
       padding: 10px 15px;
-
     }
 
     .c-lister button:before{
@@ -261,6 +266,17 @@
       padding: 10px 15px;
       border-bottom: rgba(255, 255, 255, 0.1);
       background: rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .c-lister li:after{
+      content: "×";
+      position: absolute;
+      font-size: 30px;
+      top: 0px;
+      right: 10px;
+      line-height: 40px;
+      opacity: 0.2;
     }
 
     .c-selector{
@@ -282,6 +298,7 @@
     .selector-option img{
       width: 30px;
       height: 30px;
+      opacity: 0.5;
     }
 
     p.capsule{
@@ -298,6 +315,12 @@
 
     p.capsule.alert{
       background: var(--red);
+    }
+
+    p.capsule.clear{
+      border-color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.4);
+      background: none;
     }
 
     .organisms{
@@ -338,27 +361,26 @@
     }
 
     .modal{
-      position: absolute;
+      position: fixed;
       top: 0px;
       left: 0px;
       right: 0px;
       overflow: auto;
-      background: transparent;
+      background: rgba(200,200,200,0.8);
       height: 100vh;
-      transition: 0.5s all;
-      transform: translateX(100%);
+      display: none;
     }
 
     .modal.active{
-      transform: translateX(0px);
+      display: block;
     }
 
     .modal-panel{
       background: var(--white);
       border-left: 1px solid var(--blue);
       border-right: 1px solid var(--blue);
-      width: 100%;
-      margin-left: auto;
+      max-width: 800px;
+      margin: auto;
     }
 
     .dangerousness path:nth-of-type(1){ stroke: #54dd82 }
@@ -427,7 +449,6 @@
       background: var(--blue);
       padding: 20px;
       color: var(--white);
-      border-left: 1px solid var(--white);
     }
 
     .modal-content{
@@ -561,14 +582,15 @@
           }
         },*/{
           t:"Location",
+          st:'including recent travel',
           c:{ type:'lister', preload:['🇦🇺 Australia'], add:'Add location' },
           o:{
             'done':doNextQuestion,
           }
         },
         {
-          t:"Identity",
-          c:{ type:'input', clue:'e.g. Brown Snake, Mushroom, Spider', prompts:['Brown snake','Spider','Mushroom'] },
+          t:"Keywords",
+          c:{ type:'input', clue:'e.g. Brown Snake, Mushroom, Spider', prompts:['Brown snake','Spider','Mushroom'], preload:['Snake','Spider','Mushroom'] },
           o:{
             'not sure':doNextQuestion,
             'search':doNextQuestion,
@@ -579,9 +601,9 @@
           t:"Biosphere",
           c:{ type:'selector',
             o:[
-              {t:'land', icon:'./icons/hills.svg'},
-              {t:'salt water', icon:'./icons/wave.svg'},
-              {t:'fresh water', icon:'./icons/pond.svg'}
+              {t:'land', icon:'./icons/land.svg'},
+              {t:'salt water', icon:'./icons/sea.svg'},
+              {t:'fresh water', icon:'./icons/water.svg'}
             ]
           },
           o:{
@@ -593,9 +615,9 @@
           t:"Symptoms",
           c:{ type:'selector',
             o:[
-              {t:'wound', icon:'./icons/wounds.svg'},
+              {t:'wound', icon:'./icons/wound.svg'},
               {t:'nausea', icon:'./icons/nausea.svg'},
-              {t:'dizzy', icon:'./icons/dizziness.svg'}
+              {t:'dizzy', icon:'./icons/dizzy.svg'}
             ]
           },
           o:{
@@ -650,9 +672,15 @@
 
       function makeInput(c){
         var $e = $('<div class="c-input">');
+        var $inner = $('<div style="position:relative;margin-bottom:10px;">').appendTo($e);
         //if(c.clue) $('<p class="hint">').text(c.clue).appendTo($e);
-        $('<input>').appendTo($e);
-        if(c.prompts) makeRollingPrompts(c.prompts).appendTo($e);
+        $('<input>').appendTo($inner);
+        if(c.prompts) makeRollingPrompts(c.prompts).appendTo($inner);
+        if(c.preload){
+          for(var n in c.preload){
+            $('<p class="capsule clear">').appendTo($e).text(c.preload[n]);
+          }
+        }
         return $e;
       }
 
@@ -667,6 +695,7 @@
 
         var $q = $('<div class="question">').appendTo('.search-pillar-content');
         $('<p class="question-text">').appendTo($q).text( q.t );
+        $('<p class="question-subtext">').appendTo($q).text( q.st );
         
         if(q.c){
           if(q.c.type == 'input') makeInput(q.c).appendTo($q);

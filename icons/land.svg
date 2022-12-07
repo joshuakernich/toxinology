@@ -1,0 +1,15 @@
+
+<svg vector-effect="non-scaling-stroke" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="60px" height="60px" viewBox="0 0 60 60">
+<defs>
+<path id="Layer5_0_1_STROKES" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 2.5 21.05
+Q 19.95 23 37.1 30.9 47.15 27.7 57.45 26.6
+L 57.45 42.575 57.45 57.55 2.5 57.55 2.5 21.05 Z
+M 37.1 30.9
+Q 47.275 35.63828125 57.45 42.575"/>
+</defs>
+
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#Layer5_0_1_STROKES"/>
+</g>
+</svg>

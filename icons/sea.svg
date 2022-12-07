@@ -1,0 +1,31 @@
+
+<svg vector-effect="non-scaling-stroke" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="60px" height="60px" viewBox="0 0 60 60">
+<defs>
+<path id="Layer5_0_1_STROKES" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 57.45 29.9
+L 57.45 37.7 57.45 57.55 2.5 57.55 2.5 38.4 2.5 26.6
+M 41.55 9.5
+Q 43.55 10.45 45.05 11.95 47.85 14.75 47.85 18.8 47.85 22.8 45.05 25.65 42.75 27.95 39.55 27.45 36.25 27 35.25 24 36.2 25 37.55 25 38.85 25 39.8 24 41 22.8 41 21.15 41 19.45 39.8 18.3 38.35 16.8 36 16.95 33.65 17.1 31.9 18.75 28.95 21.7 28.9 26.15 28.85 30.6 31.8 33.55 35.5 37.3 40.75 37.3 46 37.3 49.7 33.55 51.25 32 53.35 31 55.3 30.15 57.45 29.9
+M 2.5 26.6
+Q 7.25 26.6 11.6 25.05 16.05 23.4 19.4 20.6 20.95 16.35 24.05 13.45 27.4 10.3 31.65 9.1
+M 41.5 45.4
+Q 45.2 45.4 48.6 44 52.1 42.6 54.85 39.85 56.25 38.45 57.45 37.7
+M 2.5 38.4
+Q 7.95 37.35 12.1 33.65 16.35 29.95 18.1 24.6
+L 19.3 21 19.4 20.6
+M 21.65 34.1
+Q 21.65 37.8 24.25 40.4 26.85 43 30.5 43"/>
+
+<path id="Layer5_1_1_STROKES" stroke="#FFFFFF" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 31.65 9.1
+Q 37.0576171875 7.4693359375 41.55 9.5"/>
+</defs>
+
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#Layer5_0_1_STROKES"/>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#Layer5_1_1_STROKES"/>
+</g>
+</svg>
