@@ -336,6 +336,24 @@
       border: 1px solid var(--gray);
       padding: 10px;
       background: rgba(255, 255, 255, 0.5);
+      position: relative;
+    }
+
+    .organism.risky:after{
+      content: "";
+      font-weight: bold;
+      background: var(--red);
+      padding: 5px;
+      color: white;
+      background-image: url('./icons/alert-triangle.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 15px;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 15px;
+      height: 15px;
     }
 
     select{
@@ -531,6 +549,7 @@
       font-weight: bold;
       background: var(--red);
       padding: 5px 10px;
+      color: white;
     }
 
     .name-header{
@@ -557,14 +576,14 @@
       font-size: 12px;
     }
 
-    .icon{
+    /*.icon{
       display: inline-block;
       width: 15px;
       height: 15px;
       vertical-align: middle;
       background-image: url('./icons/snake-sit.svg');
       background-size: 100%;
-    }
+    }*/
 
   </style>
   <script type="text/javascript" src="jq.js"></script>
@@ -720,6 +739,7 @@
 
       for(var i=0; i<50; i++){
         var $o = $('<div class="organism">').appendTo('.organisms').click(showModal);
+        if(i<3) $o.addClass('risky');
         //$('<img src="https://picsum.photos/id/'+(106+i)+'/200/100">').appendTo($o);
         $('<img height=120 src="http://www.toxinology.com/images/snakes/SNP0521'+sneks[i%sneks.length]+'.jpg">').appendTo($o);
         $('<p>').appendTo($o).text(words[i*2]+' '+words[i*2+1]);
@@ -765,10 +785,10 @@
     <div class="organism-pillar">
       <div class="organisms-header"><p>3256 possible organisms</p><select><option>Sort by dangerousness</option></select></div>
 
-      <p class="capsule">⚠️ 512 high risk</p>
+      <p class="capsule risk high"><img class='icon' src="./icons/alert-triangle.svg"/>3 High Risk</p>
       <p class="capsule"><span class="icon snake"></span> 99+ snakes</p>
-      <p class="capsule">🕷️ 52 spiders</p>
-      <p class="capsule">🌿 12 plants</p>
+      <p class="capsule">52 spiders</p>
+      <p class="capsule">12 plants</p>
       <div class="organisms">
 
       </div>
