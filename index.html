@@ -56,8 +56,8 @@
       font-size: 30px;
       
       font-family: HeaderFont;
-      padding: 20px;
-      padding-bottom: 0px;
+      
+      margin-bottom: 20px;
     }
 
     button{
@@ -72,6 +72,14 @@
       flex: 1;
     }
 
+    button.secondary{
+      border: 1px solid var(--blue);
+      font-size: 12px;
+      padding: 5px 8px;
+      color: var(--blue);
+      background: transparent;
+    }
+
     .pillars{
       display: flex;
     }
@@ -79,16 +87,18 @@
     .search-pillar{
       
       text-align: left;
-      max-width: 500px;
+      
       
       display: inline-block;
       background: var(--blue);
       color: #F1FAEE;
+      position: relative;
 
     }
 
+
     .search-pillar-content{
-      padding: 20px;
+      
     }
 
     .organism-pillar{
@@ -120,7 +130,20 @@
       font-size: 20px;
       font-weight: normal;
       margin: 0px;
-      margin-bottom: 10px;
+      font-size: 30px;
+
+    }
+
+    h3{
+      font-size: 12px;
+      font-weight: normal;
+      margin: 0px;
+    }
+
+    hr{
+      background: var(--gray);
+      border: none;
+      height: 1px;
     }
 
     .question{
@@ -282,6 +305,7 @@
     .c-selector{
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .selector-option{
@@ -290,15 +314,30 @@
       flex-grow: 1;
       width: 80px;
       
-      font-size: 12px;
+     
       text-align: center;
-      padding: 10px;
+      
+      display: flex;
+      justify-content: center;
+      font-size: 12px;
     }
+
+
 
     .selector-option img{
       width: 30px;
       height: 30px;
       opacity: 0.5;
+    }
+
+    .selector-suboption{
+      text-align: center;
+      padding: 5px;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .selector-suboption:last-of-type{
+      border-right: none;
     }
 
     p.capsule{
@@ -379,7 +418,7 @@
     }
 
     .modal{
-      position: fixed;
+      position: absolute;
       top: 0px;
       left: 0px;
       right: 0px;
@@ -387,6 +426,8 @@
       background: rgba(200,200,200,0.8);
       height: 100vh;
       display: none;
+      z-index: 1;
+      background: var(--white);
     }
 
     .modal.active{
@@ -395,10 +436,17 @@
 
     .modal-panel{
       background: var(--white);
-      border-left: 1px solid var(--blue);
-      border-right: 1px solid var(--blue);
+      /*border-left: 1px solid var(--blue);
+      border-right: 1px solid var(--blue);*/
       max-width: 800px;
       margin: auto;
+      text-align: left;
+    }
+
+    .modal-panel.diagnosis{
+      max-width: 440px;
+      background: var(--blue);
+      margin-left: 0px;
     }
 
     .dangerousness path:nth-of-type(1){ stroke: #54dd82 }
@@ -464,13 +512,15 @@
     }
 
     .modal-header{
-      background: var(--blue);
+      /*background: var(--blue);
+      color: var(--white);*/
       padding: 20px;
-      color: var(--white);
+      padding-bottom: 0px;
     }
 
     .modal-content{
       padding: 20px;
+      padding-top: 0px;
     }
 
     .logo{
@@ -489,56 +539,58 @@
 
     }
 
-    .modal-header .capsule{
+    /*.modal-header .capsule{
       color: var(--white);
       border-color: var(--white);
       background: transparent;
-    }
+    }*/
 
     .modal-header .capsule-list{
-      background: transparent;
-      color: var(--white);
-      border-color: var(--white);
+      background: white;
+      color: var(--blue);
+      border-color: var(--gray);
     }
 
     .modal-header .capsule-list span{
-      border-color: var(--white);
+      border-color: var(--gray);
     }
 
     .modal-header img{
-      border-color: var(--white);
+      border-color: var(--blue);
     }
    
 
     .modal-menu{
       list-style-type: none;
       padding: 0px;
-      display: flex;
       margin: 0px;
       margin-bottom: 20px;
-      gap: 20px;
+      text-align: left;
+      display: block;
+      display: none;
+      
     }
 
     .modal-menu li{
       font-size: 12px;
-      padding-right: 20px;
-      border-right: 1px solid var(--blue);
+      margin-right: 5px;
+      display: inline-block;
+      background: white;
+      border: 1px solid var(--gray);
+      padding: 5px 10px;
     }
 
-    .modal-menu li:last-of-type{
-      border-right: none;
-    }
 
     .modal-menu li:before{
       content: "";
-      height: 40px;
+      width: 20px;
+      height: 20px;
       background-image: url('./icons/first-aid.png');
       background-position: center;
-      background-size: 30px;
+      background-size: 20px;
       background-repeat: no-repeat;
-      display: block;
-      width: 100%;
-      flex-grow: 1;
+      display: inline-block;
+      display: none;
     }
 
     .modal-menu li:nth-of-type(2):before{ background-image:url('./icons/diagnosis.png') }
@@ -584,6 +636,173 @@
       background-image: url('./icons/snake-sit.svg');
       background-size: 100%;
     }*/
+
+    .diagnosis-content{
+      padding: 20px;
+      background: var(--blue);
+      color: var(--white);
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .c-grader{
+      
+      flex: 1;
+      margin-bottom: 10px;
+    }
+
+    .grader-options{
+      
+      display: flex;
+      flex-direction: row;
+      flex:1;
+      border-left: 1px solid black;
+    }
+
+    .grader-title{
+      margin-bottom: 5px;
+      width: 150px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .grader-option{
+      
+      padding: 10px;
+      border: 1px solid black;
+      border-left: none;
+    }
+
+    .selector-text{
+      
+    }
+
+    .selector-byline{
+      font-size: 10px;
+      opacity: 0.5;
+    }
+
+    .c-tag-selector{
+
+    }
+
+    .tag-option{
+      display: flex;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 10px;
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      vertical-align: top;
+      flex:1;
+    }
+
+    .tag-suboption{
+      
+      white-space: nowrap;
+      padding: 10px;
+      vertical-align: middle;
+      min-height: 100%;
+      box-sizing: border-box;
+      border-right: 1px dashed rgba(255, 255, 255, 0.1);
+      position: relative;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .tag-suboption:last-of-type{
+      border-right: none;
+    }
+
+    .tag-byline, .dd-byline{
+      font-size: 12px;
+      opacity: 0.5;
+    }
+
+    .tag-suboption.selected{
+      box-shadow: inset 0px -2px white;
+    }
+
+    .tag-suboption.selected:after{
+      content: "";
+      width: 3px;
+      height: 7px;
+      border-right: 2px solid white;
+      border-bottom: 2px solid white;
+      position: absolute;
+      right: 6px;
+      top: 2px;
+      transform: rotate(45deg);
+    }
+
+    .c-dd-selector{
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 10px;
+      margin-right: 10px;
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      vertical-align: top;
+    }
+
+    .dd-option{
+      padding: 10px;
+    }
+
+    .dd-list{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: none;
+    }
+
+    .dd-label:after{
+      content: "";
+      width: 15px;
+      height: 15px;
+      border-right: 1px solid white;
+      border-bottom: 1px solid white;
+      position: absolute;
+      right: 25px;
+      top:20px;
+      transform: rotate(45deg);
+      opacity: 0.5;
+    }
+
+    .c-page-launcher{
+
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      color: rgba(255, 255, 255, 0.5);
+      position: relative;
+    }
+
+    .c-page-launcher:after{
+      content: "";
+      background: url('./icons/arrow-right.svg');
+      position: absolute;
+      width: 35px;
+      background-size: 20px;
+      background-position: center;
+      background-repeat: no-repeat;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      display: block;
+      opacity: 0.5;
+    }
+
+    .search-pillar-page{
+      display: none;
+      padding: 20px;
+      min-width: 350px;
+    }
+
+    .search-pillar-page.active{
+      display: block;
+    }
 
   </style>
   <script type="text/javascript" src="jq.js"></script>
@@ -631,6 +850,24 @@
         },
 
         {
+          t:'Diagnostic Effects',
+          c:{
+            type:'page',
+            empty:'None identified',
+            to:'.search-pillar-page.diagnostic-effects',
+          }
+        },
+
+        {
+          t:'Lab/Blood Indicators',
+          c:{
+            type:'page',
+            empty:'Normal/NA',
+            to:'.search-pillar-page.lab-indicators',
+          }
+        },
+
+        /*{
           t:"Symptoms",
           c:{ type:'selector',
             o:[
@@ -641,6 +878,159 @@
           },
           o:{
             'done':doNextQuestion
+          }
+        }*/
+      ]
+
+      var diagnosis = [
+        /*{
+          t:'Diagnostic Effects',
+          c:{ 
+            type:'grader-list', 
+            l:[
+              { t:'Local Effects', o:['minimal','significant'] },
+              { t:'General Systemic Effects', o:['Unlikely','Possible'] },
+              { t:'Neurotoxic Paralytic Effects', 
+                o:['No effects','Flaccid Paralysis'],
+                b:['Not even ptsosis','Including any ptsosis']
+               },
+              { t:'Neurotoxic Excitatory Effects', 
+                o:['Unlikely','Possible'],
+                b:['','e.g. catechlomaine storm'] 
+              },
+              { t:'Myotoxic Effects', o:['None','Mild','Possible'],
+                b:['CK < 500 IU/I','500-1500 IU/I after 12 hours','CK > 1500 IU/I']
+               },
+               {
+                t:'General Haematologic Effects',
+                o:['Evident'],
+                b:['Coagulopothy exists'],
+               }
+            ]
+          }
+        },*/
+        {
+          t:'Common Effects',
+          st:'Select all that apply',
+          c:{
+            type:'tag-selector',
+            o:[
+              {t:'Significant Local Effects'},
+              {o:[
+                {t:'Mytoxicity',b:'CK > 1500 IU/I'},
+                {t:'Mild Mytoxicity',b:'500-1500 IU/I after 12 hours'},
+                ]},
+              {t:'Flaccid Paralysis',b:'including any ptsosis'},
+              {t:'Neurotoxic Excitatory Effects',b:'e.g. catechlomaine storm'},
+              {t:'Renal Damage/Failure'},
+              {t:'Local Neurotoxin Injury'},
+              
+              {
+                o:[
+                {t:'Cardiotoxicity'},
+                {t:'Hyperkalaemic Cardiotoxicity',b:'Secondary to myolysis'},
+                ]
+              }
+            ]
+          }
+        },
+        {
+          t:'Haematologic Effects',
+          st:'Select all that apply',
+          c:{
+            type:'tag-selector',
+            o:[{t:'Coagulopothy'},{t:'Anaemia'},{t:'Haemolysis'}]
+          }
+        },
+        {
+          t:'Other Effects',
+          st:'Select all that apply',
+          c:{
+            type:'tag-selector',
+            o:[
+              { t:'Anterior pituritary haemorrage'},
+              { o:[
+              {t:'Early angio-oedema'},
+              {t:'Early angio-oedema',b:'+ Shock + GI bleeds'},
+              ]},
+              {t:'Metallic taste in mouth',b:'and/or fasciculations'},
+              {t:'Venom spit ophthalmia'}
+            ],
+          }
+        },
+      ]
+
+      var labs = [
+        {
+          t:'Bloodwork',
+          st:'Select any non-normal indicators',
+          c:{
+            type:'dd-list',
+            o:[
+              {
+                t:'PT/INR',
+                o:[
+                  {t:'Grossly Prolonged'},
+                  {t:'Prolonged'},
+              ]},
+              {
+                t:'aPTT',
+                o:[
+                  {t:'Grossly Prolonged'},
+                  {t:'Prolonged'},
+              ]},
+              {
+                t:'Fibrination',
+                o:[
+                  {t:'Defibrination'},
+                  {t:'Low'},
+                  {t:'Raised'},
+                ]
+              },
+              {
+                t:'FDP/XDP',
+                o:[
+                  {t:'Grossly Elevated'},
+                  {t:'Elevated'},
+                ]
+              },
+              {
+                t:'Thrombocytopenia',
+                o:[
+                  {t:'Primary'},
+                  {t:'Severe'},
+                  {t:'Secondary'},
+                ]
+              },
+              {
+                t:'CK',
+                o:[
+                  {t:'Grossly Elevated'},
+                  {t:'Elevated'},
+                  {t:'Mildly'},
+                ]
+              },
+              /*{ t:'Secondary Renal Failure' },
+              { t:'K++ Secondary Elevation' },
+              { t:'WCC Leukocytosis' },
+              { t:'Lymphomenia' },*/
+              {
+                t:'Hb',
+                o:[
+                    { t:'Anaemia' },{ t:'Haemolytic Anaemia' }
+                  ]
+              },
+              {
+                t:'APaO2',
+                o:[
+                { t:'Low', b:'Secondary to paralytic respiratory failure' },
+                { t:'Low', b:'Secondary to pulmonary embolism' }]},
+               {
+                t:'WBCT',
+                o:[
+                { t:'Prolonged', b:'Or not clotting' },
+                { t:'Rapid Clotting' }]},
+            ]
           }
         }
       ]
@@ -661,12 +1051,90 @@
         return $e;
       }
 
+      function makeTagSelector(c){
+
+        var $e = $('<div class="c-tag-selector">');
+        if(c.dd) $e.addClass('dd');
+
+        for(var n in c.o){
+          var $o = $('<div class="tag-option">').appendTo($e);
+          var o = c.o[n].o?c.o[n].o:[c.o[n]];
+
+          for(var m in o){
+            var $el = $('<div class="tag-suboption">').appendTo($o).click(function(){
+              
+              var b = $(this).hasClass('selected');
+
+              $(this).closest('.tag-option').find('.tag-suboption').removeClass('selected');
+              
+              if(!b) $(this).addClass('selected');
+            })
+            $('<p class="tag-text">').appendTo($el).text(o[m].t);
+
+            if(o[m].b) $('<p class="tag-byline">').appendTo($el).text(o[m].b);
+          }
+        }
+        return $e;
+      }
+
+      function makeDDSelector(c){
+
+        var $e = $('<div class="c-dd-selector">');
+
+        var $label = $('<div class="dd-label">').appendTo($e);
+        var $list = $('<div class="dd-list">').appendTo($e);
+
+        var o = c.o;
+        o.unshift({t:c.t,b:'Normal or NA'});
+
+        for(var n in o){
+
+          var $o = $('<div class="dd-option">').appendTo($list);
+          
+          $('<p class="dd-text">').appendTo($o).text(o[n].t);
+          if(o[n].b) $('<p class="dd-byline">').appendTo($o).text(o[n].b);
+        }
+
+        $label.html($e.find('.dd-option').eq(0).clone());
+
+        return $e;
+      }
+
+      function makeDDList(c){
+
+        var $e = $('<div class="c-dd-list">');
+
+        for(var n in c.o) makeDDSelector(c.o[n]).appendTo($e);
+
+        return $e;
+      }
+
+      function makePageLauncher(c){
+        var $e = $('<div class="c-page-launcher">').text(c.empty);
+        $e.click(function(){
+          $('.search-pillar-page').removeClass('active');
+          $(c.to).addClass('active');
+        })
+        return $e;
+      }
+
       function makeSelector(c){
+
         var $e = $('<div class="c-selector">');
         for(var n in c.o){
           var $o = $('<div class="selector-option">').appendTo($e);
-          $('<img src="'+c.o[n].icon+'">').appendTo($o);
-          $('<p>').appendTo($o).text(c.o[n].t);
+          var o = c.o[n].o?c.o[n].o:[c.o[n]];
+
+          for(var m in o){
+            var $el = $('<div class="selector-suboption">').appendTo($o);
+            if(o[m].icon) $('<img src="'+o[m].icon+'">').appendTo($el);
+            $('<p class="selector-text">').appendTo($el).text(o[m].t);
+
+            if(o[m].b) $('<p class="selector-byline">').appendTo($el).text(o[m].b);
+          }
+
+          $o.css('flex-grow',o.length);
+          
         }
         return $e;
       }
@@ -703,23 +1171,39 @@
         return $e;
       }
 
+      function makeGrader(c){
+        var $e = $('<div class="c-grader">');
+        var $t = $('<div class="grader-title">').appendTo($e).text(c.t);
+        var $os = $('<div class="grader-options">').appendTo($e);
+        for(var n in c.o){
+          var $o = $('<div class="grader-option">').appendTo($os).text(c.o[n]);
+          if(c.b && c.b[n]) $('<p class="byline">').appendTo($o).text(c.b[n]);
+        }
+        return $e;
+      }
+
       function doFirstAid(){
         doNextQuestion();
       }
 
-      function doNextQuestion(){
-        iq++;
+      function doNextQuestion($el,q){
+        
 
-        var q = qs[iq];
-
-        var $q = $('<div class="question">').appendTo('.search-pillar-content');
+        var $q = $('<div class="question">').appendTo($el);
         $('<p class="question-text">').appendTo($q).text( q.t );
         $('<p class="question-subtext">').appendTo($q).text( q.st );
         
         if(q.c){
+          if(q.c.type == 'page') makePageLauncher(q.c).appendTo($q);
           if(q.c.type == 'input') makeInput(q.c).appendTo($q);
           if(q.c.type == 'lister') makeLister(q.c).appendTo($q);
           if(q.c.type == 'selector') makeSelector(q.c).appendTo($q);
+          if(q.c.type == 'tag-selector') makeTagSelector(q.c).appendTo($q);
+          if(q.c.type == 'dd-list') makeDDList(q.c).appendTo($q);
+          if(q.c.type == 'grader') makeGrader(q.c).appendTo($q);
+          if(q.c.type == 'grader-list'){
+            for(var n in q.c.l) makeGrader(q.c.l[n]).appendTo($q);
+          }
         } 
 
         if(q.o){
@@ -733,12 +1217,24 @@
 
 
 
-      while(iq<qs.length-1) doNextQuestion();
+      for( var n in qs ) doNextQuestion($('.search-pillar-content'), qs[n]);
+      
+      for( var n in diagnosis ) doNextQuestion($('.diagnostic-effects'), diagnosis[n]);
+      for( var n in labs ) doNextQuestion($('.lab-indicators'), labs[n]);
+
+      $('<button class="closer">').appendTo('.diagnostic-effects').text('Show results');
+      $('.advanced-diagnosis-button').click(function(){
+        $('.modal-diagnosis').addClass('active');
+        $('search-pillar').addClass('responsive');
+      })
+
 
       var sneks = [1,2,3,4,5,6]
 
       for(var i=0; i<50; i++){
-        var $o = $('<div class="organism">').appendTo('.organisms').click(showModal);
+        var $o = $('<div class="organism">').appendTo('.organisms').click(function(){
+          $('.modal-organism').addClass('active');
+        });
         if(i<3) $o.addClass('risky');
         //$('<img src="https://picsum.photos/id/'+(106+i)+'/200/100">').appendTo($o);
         $('<img height=120 src="http://www.toxinology.com/images/snakes/SNP0521'+sneks[i%sneks.length]+'.jpg">').appendTo($o);
@@ -761,24 +1257,62 @@
         $(this).attr('d','M '+x1+' '+y1+' A 50 50 0 0 1 '+x2+' '+y2);
       })
 
-      function showModal(){
-        $('.modal').addClass('active');
-      }
+      $('.modal .closer').click(function(){
+        $(this).closest('.modal').removeClass('active');
+      })
 
-      $('.modal').click(function(){
-        $(this).removeClass('active');
+      $('.search-pillar-back').click(function(){
+        $('.search-pillar-page').removeClass('active');
+        $('.search-pillar-home').addClass('active');
       })
     })
   </script>
 </head>
 <body>
   
-  
+  <!--<div class="modal modal-diagnosis">
+    <div class="modal-panel diagnosis">
+      <div class="diagnosis-content">
+        <div class="name-header">
+            <div class='name-back closer'></div>
+            <div class="name-names">
+              <div class='name-main'>Diagnostic Effects</div>
+            </div>
+          </div>
+          <br>
+      </div>
+
+    </div>
+  </div>-->
+
   <div class="pillars">
     <div class="search-pillar">
-      <div class="search-pillar-header"><div class="logo"></div></div>
-      <div class='search-pillar-content'></div>
-      <!--div class="advice">
+      <div class="search-pillar-page search-pillar-home active">
+        <div class="search-pillar-header"><div class="logo"></div></div>
+        <div class='search-pillar-content'></div>
+      </div>
+      <div class="search-pillar-page diagnostic-effects">
+        <div class="name-header">
+            <div class='name-back search-pillar-back'></div>
+            <div class="name-names">
+              <div class='name-main'>Diagnostic Effects</div>
+            </div>
+          </div>
+          <br>
+      </div>
+      <div class="search-pillar-page lab-indicators">
+        <div class="name-header">
+            <div class='name-back search-pillar-back'></div>
+            <div class="name-names">
+              <div class='name-main'>Lab Indicators</div>
+            </div>
+          </div>
+          <br>
+      </div>
+
+      <!--button class='advanced-diagnosis-button' style="margin:0px 20px;">Add Diagnostic Effects</button>
+      <button class='advanced-diagnosis-button' style="margin:0px 20px;">Add Lab Results</button>
+      <div class="advice">
         <p>If life is in <b>immediate danger</b>, manage any acute medical problems to stabilise the situation before continuing.</p>
       </div-->
     </div>
@@ -791,26 +1325,32 @@
       <p class="capsule">12 plants</p>
       <div class="organisms">
 
-      </div>
+      
     
-    <div class="modal">
+    <div class="modal modal-organism">
+      <div style="text-align:left;padding:15px 20px;background: var(--gray);">
+        <button class="secondary closer"><img style="position:relative;vertical-align: middle;margin-right: 5px;top:-1px;" width=15 src='./icons/arrow-left-blue.svg'>Back to search results</button>
+      </div>
       <div class="modal-panel">
         
           
         <div class="modal-header">
           
+          
+          
           <div class="name-header">
-            <div class='name-back'></div>
+            <!--div class='name-back closer'></div-->
             <div class="name-names">
               <div class='name-main'>King Brown Snake</div>
               <div class='name-secondary'>AKA Mulga Snake</div>
             </div>
           </div>
+         
+          <div style="height:10px;"></div>
           
-          <div style="height:10px;"></div>
-          <div style="height:10px;"></div>
           <p class="capsule risk high"><img class='icon' src="./icons/alert-triangle.svg"/>High Risk</p>
-          <p class="capsule-list"><span><img class='icon' src="./icons/book-open.svg"/>Pseudechis australis</span><span>Elapidae</span><span>Elapinae</span><span>Pseudechis</span><span>australis</p>
+
+          <p class="capsule-list"><span><!--img class='icon' src="./icons/book-open.svg"/-->Pseudechis australis</span><span>Elapidae</span><span>Elapinae</span><span>Pseudechis</span><span>australis</p>
           <p class="capsule">Australia</p>
           <!--div class="c-dangerousness">
             <svg class='dangerousness' viewBox='-20 -20 140 70' width=150 height=75 stroke='black' stroke-width=10>
@@ -823,10 +1363,15 @@
             <div class="needle"></div>
             <p>Lethal</p>
           </div-->
+
+          
           <div style="height:10px;"></div>
-          <img height=200 style="border:1px solid var(--white);" src="http://www.toxinology.com/images/snakes/SNP05211.jpg"><div 
-            style="margin-left:10px;border:1px solid var(--white);background-position:center;background-size:150%;width:200px;height:200px;display:inline-block;background-image:url(./australia.png)">
+          <div 
+            style="margin-right:10px;border:1px solid var(--gray);background-position:center;background-size:150%;width:200px;height:200px;display:inline-block;background-image:url(./australia.png)">
             </div>
+          <img height=200 style="border:1px solid var(--gray);" src="http://www.toxinology.com/images/snakes/SNP05211.jpg">
+
+        
         </div>
         <div class="modal-content">
         <ul class="modal-menu">
@@ -835,8 +1380,10 @@
           <li>Treatment</li>
           <li>Lab Findings</li>
         </ul>
+        <section>
+          <hr>
         <h2>First Aid</h2>
-        <p>First aid for Australian and New Guinean snakebites</p>
+        <h3>For all Australian and New Guinean snakebites</h3>
         <br>
         <img src="./icons/distance.png" width="30">
           <p><b>Create safe distance from Snake.</b></p>
@@ -850,15 +1397,19 @@
           <img src="./icons/ring.png" width="30">
           <p><b>Remove jewelery on bitten limb.</b> All rings or other jewellery on the bitten limb, especially on fingers, should be removed, as they may act as tourniquets if oedema develops.</p>
           <br>
-        <h2>Key features</h2>
+        </section>
+        <hr>
+        <h2>Key Diagnostic Effects</h2>
         <p class="capsule">Local pain & swelling</p>
         <p class="capsule">myolysis</p>
         <p class="capsule">anticoagulant coagulopathy</p>
         <p class="capsule">renal failure</p>
         <br><br>
+        <hr>
         <h2>Treatment</h2>
         <div class="treatment">
         <p>Bites by mulga snakes are characterized by local pain, swelling and systemic myolysis, occasionally anticoagulant coagulopathy, and secondary renal failure. Rarely, there may be evidence of mild paralysis, usually limited to ptosis only. Probably most bites will develop at least some systemic envenoming, so many cases will require antivenom therapy. Admit all cases of definite or suspected bites.</p><p>On presentation, establish a good IV line, commence IV fluids, take bloods for initial tests ("extended coagulation tests" = PT/INR, aPTT, fibrinogen level***, FDP/XDP, platelet count; CK, urea, creatinine, WCC, K+), perform venom detection on the bite site (if uncertain of identity of snake). (*** fibrinogen level is only useful if it can be reliably measured to very low levels; many labs are unable to do this or may use indirect measurement and in this setting fibrinogen is not a useful test and could be omitted)Unless contraindicated by pre-existing medical conditions, give an IV fluid load (1L over 2-3 hrs in an adult; volume determined by weight in a child), then keep well hydrated thereafter (100-150 mL/hr in an adult), while carefully watching for fluid overload, monitoring fluid input and output. If a first aid bandage is in place over the bitten limb, leave on until the blood tests, venom detection and full examination are complete and results available. To perform venom detection cut away the bandage immediately over the bite area, to swab for venom. Keep the cut-away bandages, in case they are needed later for venom detection.</p><p>If the patient presents with envenoming clearly established, or blood tests show evidence of systemic envenoming (high and/or rising CK, less commonly an anticoagulant coagulopathy, with prolonged PT/INR, aPTT, but normal fibrinogen level and normal or barely elevated FDP/XDP), then commence antivenom therapy prior to removal of first aid. Initial dose should be 1 vial of CSL Black Snake AV IV (only in severe cases would >1 vial be needed initially), diluted up to 1:10 (less in children, to avoid volume overload), with adrenaline ready to treat anaphylaxis, should this occur.</p><p>Repeat blood tests 3 hrs after completion of initial dose of antivenom therapy, to determine if myolysis has been arrested (no further or minimal rise in CK) and any coagulopathy reversed (PT/INR and aPTT falling towards normal). If the CK has continued to climb dramatically, consider giving further antivenom. If the 3hr tests suggest improvement then wait 2-3 hrs and retest. If there is continued improvement, it is likely no further antivenom will be needed. If, however, there has been no improvement or worsening, give further antivenom. The role of antivenom in reversing myolysis is controversial, but given the potential lethality of severe myolysis, further antivenom therapy should always be considered.</p><p>For cases where initial blood tests show no sign of either myolysis (CK) or anticoagulant coagulopathy, no antivenom is required at this stage, but repeat tests 2-3 hrs and 5-6 hrs later and if these show developing envenoming, treat with antivenom, as discussed earlier.</p><p>For cases with myolysis, CK may rise to very high levels, >100,000 IU/L. This is accompanied by muscle pain, tenderness and weakness in most cases. There will also be gross myoglobinuria (red to black urine) and the risk of renal failure. Hyperkalaemia can develop secondary to myolysis and is more severe if there is secondary renal failure. It can cause cardiotoxicity and is potentially lethal and may be difficult to treat.</p><p>The anticoagulant coagulopathy is only rarely associated with significant bleeding and in most cases will be rapidly and completely reversed by antivenom therapy. It is distinguished from the defibrination commonly seen with bites by some other Australian snakes (brown snakes, tiger snakes, taipans etc) by the normal fibrinogen level and absence of high levels of FDP/XDP.</p><p>Mulga snake bites commonly develop both local pain and swelling. The latter may be quite extensive, but local necrosis is rare. The swelling may take several days to > week to settle fully and may look like cellulitis. If there is a strong suspicion of secondary infection with cellulitis, then antibiotic therapy, initially IV, is required, but in most cases of mulga snake bites, antibiotics are not required. Tetanus immunisation status should always be checked and a booster given when indicated, but not until any coagulopathy has been reversed.</p>
+      </div>
       </div>
       </div>
     </div>
